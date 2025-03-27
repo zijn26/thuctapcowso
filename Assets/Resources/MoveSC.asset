@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735783fee804f3147b05b27b4d93e7e1, type: 3}
+  m_Name: MoveSC
+  m_EditorClassIdentifier: 
+  timeToMaxSpeed: 0.2
+  accelGround: 5
+  accelAir: 0
+  timeToMaxHight: 1
+  jumpForce: 4
+  mulJump: 0.5

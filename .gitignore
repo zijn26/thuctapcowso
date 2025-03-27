@@ -1,0 +1,53 @@
+# ===========================
+# 🔥 IGNORE FILE CHUẨN CHO UNITY 🔥
+# ===========================
+
+# 🔹 1. Bỏ qua các thư mục hệ thống của Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# 🔹 2. Bỏ qua file của Unity Package Manager
+[Pp]ackages/
+# Nhưng giữ lại file quan trọng
+!Packages/manifest.json
+
+# 🔹 3. Bỏ qua cache và file tạm
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user
+*.vcxproj*
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.obj
+
+# 🔹 4. Bỏ qua các file log
+*.log
+*.apk
+*.aab
+*.crash
+*.swp
+*.lock
+*.tmp
+*.gid
+*.cache
+*.stackdump
+
+# 🔹 5. Giữ lại thư mục quan trọng
+!Assets/
+!ProjectSettings/
+
+# 🔹 6. Nếu dùng Unity Cloud Build, không ignore thư mục này
+# ![Bb]uilds/

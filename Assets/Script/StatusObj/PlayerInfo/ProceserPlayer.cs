@@ -55,6 +55,7 @@ public class ProceserPlayer :  HungMono
         {
             this.combatPlayer.maxStat[item.statType] = (item.bonusStat + item.baseStat);
         }
+        Debug.Log("CHang Stat");
         BarCrl.Instance.SetValueHpBar(combatPlayer.HpPercent());
         BarCrl.Instance.SetSaitamaBar(combatPlayer.SaitamaPercent());
     }

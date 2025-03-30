@@ -1,38 +1,36 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
-public class PlayerMOve : HungMono
+public abstract class BaseMove : HungMono
 {
-    [SerializeField] private float lastTimeOnGorund;
-    [SerializeField] private float timeJumpCounter;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Vector2 dirMove; 
+        [SerializeField] protected float lastTimeOnGorund;
+    [SerializeField] protected float timeJumpCounter;
+    [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected Vector2 dirMove; 
     
-    [SerializeField] private MoveSSC moveSC;
-    private bool isJumping;
+    [SerializeField] protected MoveSSC moveSC;
+    protected bool isJumping;
 
     
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Vector2 gCheckSize;
-    [SerializeField] private Transform centerGCheck;
+    [SerializeField] protected LayerMask layerMask;
+    [SerializeField] protected Vector2 gCheckSize;
+    [SerializeField] protected Transform centerGCheck;
     protected override void Start()
     {
         base.Start();
     }
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        dirMove.x = Input.GetAxisRaw("Horizontal");
-        dirMove.y = Input.GetAxisRaw("Vertical");
+        LoadDirMove();
 
         lastTimeOnGorund = ( lastTimeOnGorund < 0) ? 0 : -1 * Time.deltaTime;
         GroundCheck();  
       
     }
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         Move(1);
         if(dirMove.y > 0 )
@@ -47,13 +45,21 @@ public class PlayerMOve : HungMono
         }else{
             isJumping = false;
         }
+        if(dirMove.x > 0) 
+        {
+            this.transform.rotation = new Quaternion(0 , 0 , 0 , 0 );
+        }
+        else if (dirMove.x < 0)
+        {
+            this.transform.rotation = new Quaternion(0 , 180 , 0 , 0 );
+        }
     }
-    private void Move(float lerpAmout)
+    protected void Move(float lerpAmout)
     {
         float targetSpeed = this.dirMove.x  
-            *   PlayerCrl.Instance.proceserPlayer.statSys.GetStatNumber(StatType.Speed);
+            *   GetMaxSpeed();
 
-        targetSpeed = Mathf.Lerp(PlayerCrl.Instance.proceserPlayer.statSys.GetStatNumber(StatType.Speed), targetSpeed , lerpAmout);
+        targetSpeed = Mathf.Lerp(GetMaxSpeed(), targetSpeed , lerpAmout);
 
         float difSpeed = targetSpeed - this.rb.velocity.x;
 
@@ -61,33 +67,37 @@ public class PlayerMOve : HungMono
 
         this.rb.AddForce(force * Vector2.right);
     }
-    private void Jump()
+    protected void Jump()
     {
         isJumping = true;
         rb.AddForce(moveSC.jumpForce * Vector2.up ,ForceMode2D.Impulse);
         timeJumpCounter = 0;
-    }
-    void GroundCheck()
-    {
-        if(Physics2D.OverlapBox(centerGCheck.position , gCheckSize , 0 , layerMask))
-        {
-            this.lastTimeOnGorund = 1;
-        }
-    }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(this.centerGCheck.position , gCheckSize );
     }
     protected override void LoadComponent()
     {
         Debug.Log("done load Move component");
 
         this.rb = this.GetComponent<Rigidbody2D>();
-        this.moveSC = Resources.Load<MoveSSC>("MoveSC");
-
-        this.centerGCheck = this.transform.GetChild(0).GetChild(0);
+        LoadGroundCheck();
+        LoadMoveSC();
     }
+    protected abstract void LoadGroundCheck();
+    protected abstract void LoadMoveSC();
+    protected abstract float GetMaxSpeed();
+    protected abstract void LoadDirMove();
+    protected void GroundCheck()
+    {
+        if(Physics2D.OverlapBox(centerGCheck.position , gCheckSize , 0 , layerMask))
+        {
+            this.lastTimeOnGorund = 1;
+        }
+    }
+    protected void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(this.centerGCheck.position , gCheckSize );
+    }
+    
     public void SetGravityScale(float scaleGravity)
     {
         this.rb.gravityScale = scaleGravity;

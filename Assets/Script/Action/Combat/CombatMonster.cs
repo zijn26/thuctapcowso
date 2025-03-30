@@ -10,6 +10,7 @@ public class CombatMonster : CombatEnity
         InitSkill();
         InitStat();
         InitCurStat();
+        InitCoolDown();
     }
     protected void InitSkill()
     {
@@ -20,7 +21,8 @@ public class CombatMonster : CombatEnity
     protected void InitStat()
     {
         maxStat.Add(StatType.Hp , 100);
-        
+        maxStat.Add(StatType.Speed , 5);
+        maxStat.Add(StatType.Attack , 10);
     }
     protected void InitCurStat()
     {
@@ -30,5 +32,9 @@ public class CombatMonster : CombatEnity
     protected override LayerMask GetLayerMask()
     {
         return LayerMask.GetMask("Player");
+    }
+    public float GetPercentHp()
+    {
+        return curStat[StatType.Hp] / maxStat[StatType.Hp];
     }
 }

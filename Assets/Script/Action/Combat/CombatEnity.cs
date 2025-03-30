@@ -79,8 +79,8 @@ public abstract class CombatEnity : HungMono
     }
     public bool UseSkill(SkillData skillData)
     {
-        Collider2D collider2D = Physics2D.Raycast(transform.position ,Vector2.right , skillData.range ,seftlayerMask).collider;
-        Debug.DrawRay(transform.position , Vector2.right * skillData.range , Color.red);
+        Collider2D collider2D = Physics2D.Raycast(transform.position ,this.transform.right , skillData.range ,seftlayerMask).collider;
+        Debug.DrawRay(transform.position , this.transform.right * skillData.range , Color.red);
         if(collider2D == null) return false;
         if(collider2D.gameObject == this.gameObject) return false;
         // Debug.Log(collider2D.gameObject.name);

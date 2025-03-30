@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50fc78c8a494a04b81b9c776edd7a69, type: 3}
-  m_Name: Player1
+  m_Script: {fileID: 11500000, guid: 735783fee804f3147b05b27b4d93e7e1, type: 3}
+  m_Name: Monster
   m_EditorClassIdentifier: 
-  baseHp: 100
-  baseAttack: 10
-  baseSpeed: 6
-  baseSaitama: 8
+  timeToMaxSpeed: 0.2
+  accelGround: 5
+  accelAir: 0
+  timeToMaxHight: 1
+  jumpForce: 4
+  mulJump: 0.5

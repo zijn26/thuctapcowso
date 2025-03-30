@@ -26,8 +26,8 @@ public class ProceserPlayer :  HungMono
     protected override void LoadComponent()
     {
         this.LoadScStat();
-        this.LoadStatFormSave();
         this.LoadCombatStat();
+        this.LoadStatFormSave();
         combatPlayer.OnTakenDamage += TakenDamageHandle;// xu li khi nhan dame
         statSys.OnChangedBaseStat += HandleChange; 
         statSys.OnChangBonusStat += HandleChange;
@@ -71,7 +71,7 @@ public class ProceserPlayer :  HungMono
     {
         if(combatPlayer == null)
         {
-            combatPlayer = this.transform.GetComponentInChildren<CombatPlayer>();
+            combatPlayer = this.transform.GetComponentInParent<CombatPlayer>();
         }
     }
     // protected void LoadAndInitCurStat()

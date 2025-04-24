@@ -64,31 +64,34 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.36f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\PlayerCrl.cs" />
-    <Compile Include="Assets\Script\Action\Combat\CombatPlayer.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\BarCrl.cs" />
+    <Compile Include="Assets\Script\Core\ObjectPool\ObjectPool.cs" />
+    <Compile Include="Assets\Script\Player\LeveManager.cs" />
+    <Compile Include="Assets\Script\Items\Item.cs" />
+    <Compile Include="Assets\Script\Player\InventoryPlayer.cs" />
+    <Compile Include="Assets\Script\Player\ProceserPlayer.cs" />
+    <Compile Include="Assets\Script\Items\ItemTemplate.cs" />
+    <Compile Include="Assets\Script\Combat\CombatEnity.cs" />
+    <Compile Include="Assets\Script\Player\PlayerCrl.cs" />
     <Compile Include="Assets\Resources\MoveSSC.cs" />
-    <Compile Include="Assets\Script\Action\BaseMove.cs" />
+    <Compile Include="Assets\Script\Combat\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Script\Player\ItemSlot.cs" />
     <Compile Include="Assets\Script\HungMono.cs" />
-    <Compile Include="Assets\Script\Action\Combat\CombatEnity.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\LeveManager.cs" />
+    <Compile Include="Assets\Script\NPCs\MonsterInventory.cs" />
     <Compile Include="Assets\Resources\PlayerInfoSC.cs" />
-    <Compile Include="Assets\Script\Action\Monster\MonsterMove.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\StatSys.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\StatsSystem.cs" />
-    <Compile Include="Assets\Script\Action\Monster\MonsterAttack.cs" />
-    <Compile Include="Assets\Script\StatusObj\Monster\MonsterBar.cs" />
-    <Compile Include="Assets\Script\Action\Combat\NewBehaviourScript.cs" />
-    <Compile Include="Assets\Script\StatusObj\Monster\MonsterCrl.cs" />
-    <Compile Include="Assets\Script\Items\BaseItem.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\BaseChaState.cs" />
-    <Compile Include="Assets\Script\Items\ItemSc.cs" />
-    <Compile Include="Assets\Script\Action\Player\PlayerMOve.cs" />
-    <Compile Include="Assets\Script\StatusObj\ObjInfo.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\IStatCurrent.cs" />
-    <Compile Include="Assets\Script\ObjectPool\ObjectPool.cs" />
-    <Compile Include="Assets\Script\StatusObj\PlayerInfo\ProceserPlayer.cs" />
-    <Compile Include="Assets\Script\Action\Combat\CombatMonster.cs" />
+    <Compile Include="Assets\Script\Combat\MonsterAttack.cs" />
+    <Compile Include="Assets\Script\Core\ObjectPool\ItemPool.cs" />
+    <Compile Include="Assets\Script\Items\ItemDataMana.cs" />
+    <Compile Include="Assets\Script\Core\ObjectPool\MonsterPool.cs" />
+    <Compile Include="Assets\Script\UI\MonsterBar.cs" />
+    <Compile Include="Assets\Script\NPCs\MonsterCrl.cs" />
+    <Compile Include="Assets\Script\NPCs\MonsterMove.cs" />
+    <Compile Include="Assets\Script\NPCs\BaseMove.cs" />
+    <Compile Include="Assets\Script\Combat\CombatPlayer.cs" />
+    <Compile Include="Assets\Script\Combat\CombatMonster.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMOve.cs" />
+    <Compile Include="Assets\Script\Core\StatSys.cs" />
+    <Compile Include="Assets\Resources\MonsterAuto.cs" />
+    <Compile Include="Assets\Script\UI\BarCrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -995,10 +998,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
       <Private>False</Private>
@@ -1007,12 +1006,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.Flow.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
@@ -1021,6 +1020,10 @@
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
@@ -1079,16 +1082,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">

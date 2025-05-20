@@ -14,11 +14,11 @@ public class StatSys
     {
         listStat.Add( new StatInfo(stattype , basestat , bonusstat));
     }
-    public void AddStatNumber( StatType statType , float number)
-    {
-        var statinfo = listStat.Find( x => x.statType == statType);
-        statinfo.baseStat += number;
-    }
+    // public void AddStatNumber( StatType statType , float number)
+    // {
+    //     var statinfo = listStat.Find( x => x.statType == statType);
+    //     statinfo.baseStat += number;
+    // }
     public StatInfo GetStatInfo(StatType statType)
     {
         return listStat.Find( x => x.statType == statType);
@@ -27,13 +27,13 @@ public class StatSys
     {
         var statinfo = listStat.Find(x => x.statType == statType);
         statinfo.baseStat += value;
-        if(OnChangedBaseStat != null) OnChangedBaseStat(this , EventArgs.Empty);
+        if(OnChangedBaseStat != null) OnChangedBaseStat(statType , EventArgs.Empty);
     }
     public void AddBonusStat(StatType statType , float value)
     {
         var statinfo = listStat.Find(x => x.statType == statType);
         statinfo.bonusStat += value;
-        // if(OnChangBonusStat != null) OnChangBonusStat(this , EventArgs.Empty);
+        if(OnChangBonusStat != null) OnChangBonusStat(statType , EventArgs.Empty);
     }
     public float GetStatNumber(StatType statType)
     {

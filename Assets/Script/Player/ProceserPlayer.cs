@@ -20,7 +20,6 @@ public class ProceserPlayer :  HungMono
         {
             leveManager = new LeveManager();
         }
-       
     }
    
     protected override void LoadComponent()
@@ -51,11 +50,12 @@ public class ProceserPlayer :  HungMono
     }
     protected void HandleChange(object obj , EventArgs args)
     {
-        foreach (var item in statSys.ListStat)
-        {
-            this.combatPlayer.maxStat[item.statType] = (item.bonusStat + item.baseStat);
-        }
-        Debug.Log("CHang Stat");
+        // foreach (var item in statSys.ListStat)
+        // {
+        //     this.combatPlayer.maxStat[item.statType] = item.bonusStat + item.baseStat;
+        // }
+        this.combatPlayer.maxStat[(StatType) obj ] = statSys.GetStatNumber((StatType)obj);
+        Debug.Log("Change Stat");
         BarCrl.Instance.SetValueHpBar(combatPlayer.HpPercent());
         BarCrl.Instance.SetSaitamaBar(combatPlayer.SaitamaPercent());
     }

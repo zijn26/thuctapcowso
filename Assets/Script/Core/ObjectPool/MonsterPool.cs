@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterPool : Objectpool
 {
     protected static MonsterPool intance;
-    public static MonsterPool Intance => intance;
+    public static MonsterPool Instance => intance;
     void Awake()
     {
         if(intance == null )

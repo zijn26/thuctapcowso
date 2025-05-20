@@ -29,9 +29,10 @@ public class MonsterCrl : HungMono
         if(Input.GetKeyDown(KeyCode.U))
         monsterIvtory.DropItem();
     }
-    protected void DieHandle(object obj , EventArgs args)
+    protected void DieHandle(object obj, EventArgs args)
     {
         monsterIvtory.DropItem();
+        MonsterPool.Instance.DeSpawnObj(this.gameObject.transform);
     }
     protected void LoadMonsterBar()
     {

@@ -12,15 +12,14 @@ public class ItemTemplate : MonoBehaviour
     [SerializeField] public int quanity = 1;
     protected void OnEnable()
     {
-        if (iconObj == null) iconObj = this.transform.GetComponent<SpriteRenderer>();
+        this.ResetState();
         this.quanity = 1;
+        this.rigid.bodyType = RigidbodyType2D.Dynamic;
     }
     protected void Awake()
     {
-        if (iconObj == null) iconObj = this.transform.GetComponent<SpriteRenderer>();
-        if (boxColider == null) boxColider = this.transform.GetComponent<BoxCollider2D>();
-        if (rigid == null) rigid = this.transform.GetComponent<Rigidbody2D>();
-    }   
+        this.ResetState();
+    }
     public void UploadDataForTemplate(Item item)
     {
         if (item == null || iconObj == null)
@@ -35,7 +34,7 @@ public class ItemTemplate : MonoBehaviour
         boxColider.size = iconObj.size;
         this.gameObject.name = item.name;
     }
-    
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground"))
@@ -44,5 +43,11 @@ public class ItemTemplate : MonoBehaviour
             // Debug.Log("va");
         }
         // else Debug.Log(col.gameObject.name);
+    }
+    protected void ResetState()
+    { 
+        if (iconObj == null) iconObj = this.transform.GetComponent<SpriteRenderer>();
+        if (boxColider == null) boxColider = this.transform.GetComponent<BoxCollider2D>();
+        if (rigid == null) rigid = this.transform.GetComponent<Rigidbody2D>();
     }
 }

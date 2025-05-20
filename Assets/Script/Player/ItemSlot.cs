@@ -7,11 +7,12 @@ public class ItemSlot
 {
     public Item itemData;
     public int curQuanity;
-    public static int maxQuanity = 9;
-    public ItemSlot(Item data,  int curQuanity)
+    public int maxQuanity = 9;
+    public ItemSlot(Item data, int curQuanity , int maxQuanity = 9)
     {
         this.itemData = data;
         this.curQuanity = curQuanity;
+        this.maxQuanity = maxQuanity;
     }
     public bool Isfull()
     {
@@ -20,6 +21,10 @@ public class ItemSlot
     public int CountQable()
     {
         return maxQuanity - curQuanity;
+    }
+    public void SetMaxQuanity(int value)
+    {
+        maxQuanity = value;
     }
 }
 

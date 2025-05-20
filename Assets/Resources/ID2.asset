@@ -18,3 +18,8 @@ MonoBehaviour:
   description: fd
   itemType: 1
   pointInIt: 6
+  listStatItem:
+  - statType: 4
+    stat: 10
+  - statType: 3
+    stat: 10

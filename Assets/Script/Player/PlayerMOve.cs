@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerMOve : BaseMove
 {
+    public Animator animator;
     protected override void Start()
     {
         base.Start();
@@ -18,9 +19,9 @@ public class PlayerMOve : BaseMove
     }
     protected override void LoadMoveSC()
     {
-        if(moveSC != null) return;
+        if (moveSC != null) return;
         moveSC = Resources.Load<MoveSSC>("MoveSC");
-        if(moveSC == null) Debug.LogError("MoveSC not found");
+        if (moveSC == null) Debug.LogError("MoveSC not found");
     }
     protected override void LoadGroundCheck()
     {
@@ -30,5 +31,18 @@ public class PlayerMOve : BaseMove
     {
         dirMove.x = Input.GetAxis("Horizontal");
         dirMove.y = Input.GetAxis("Vertical");
+    }
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        LoadAnimator();
+    }
+    protected void LoadAnimator()
+    {
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+            if (animator == null) Debug.LogError("Animator not found");
+        }
     }
 }

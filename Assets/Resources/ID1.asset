@@ -16,5 +16,10 @@ MonoBehaviour:
   iconIt: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   nameIt: item1
   description: cdf
+  maxQuanity: 1
   itemType: 0
-  pointInIt: 3
+  listStatItem:
+  - statType: 1
+    stat: 10
+  - statType: 2
+    stat: 3
